@@ -121,17 +121,16 @@ p:last-child { margin-bottom: 0; }
 .diptych img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
 .diptych figcaption { grid-column: 1 / -1; font-size: .85rem; color: var(--muted); }
 
-/* Auszeichnungen: offen, mit Logos der Preisgeber */
-.awards-section { padding-top: 8px; padding-bottom: 72px; }
-.awards { list-style: none; margin: 0; padding: 36px 0 0; display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); }
-.award { padding: 0 40px; border-left: 1px solid var(--line); }
-.award:first-child { padding-left: 0; border-left: 0; }
-.award__logo { height: 64px; display: flex; align-items: center; margin-bottom: 26px; }
+/* Auszeichnungen: groß und zentriert (wie auf der alten Seite), mit Logos */
+.awards-section { padding-top: 24px; padding-bottom: 88px; text-align: center; }
+.awards__title { font-size: clamp(2rem, 4.2vw, 2.8rem); line-height: 1.15; letter-spacing: -.01em; margin: 0 0 52px; }
+.awards { list-style: none; margin: 0 auto; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 56px; max-width: 900px; }
+.award { display: flex; flex-direction: column; align-items: center; }
+.award__logo { height: 64px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; }
 .award__logo img { height: 100%; width: auto; }
 .award__logo img.logo-wordmark { height: 46px; }
-.award__year { font-size: .9rem; font-weight: 700; letter-spacing: .1em; color: var(--accent); margin: 0 0 4px; }
-.award__name { font-size: 1.75rem; line-height: 1.15; margin: 0 0 6px; }
-.award__note { color: var(--muted); margin: 0; }
+.award__name { font-size: clamp(1.7rem, 3vw, 2.2rem); line-height: 1.15; margin: 0 0 10px; hyphens: manual; }
+.award__note { font-size: 1.35rem; line-height: 1.35; color: var(--muted); margin: 0; }
 @media (prefers-color-scheme: dark) {
   .logo-wordmark { filter: invert(1); }  /* schwarzes Allianz-Logo hell darstellen */
 }
@@ -142,7 +141,8 @@ p:last-child { margin-bottom: 0; }
 .work p { font-size: 1.06rem; }
 
 /* Instagram-Archiv (lokale Vorschaubilder, keine Einbettung) */
-.insta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; max-width: 760px; margin: 0 0 22px; }
+.insta-section { text-align: center; }
+.insta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 32px 0 28px; }
 .insta a { display: block; overflow: hidden; }
 .insta img { width: 100%; aspect-ratio: 1; object-fit: cover; transition: opacity .2s ease; }
 .insta a:hover img { opacity: .82; }
@@ -190,9 +190,7 @@ p:last-child { margin-bottom: 0; }
 @media (max-width: 860px) {
   .intro { grid-template-columns: 1fr; gap: 36px; }
   .diptych { justify-self: start; max-width: 340px; }
-  .awards { grid-template-columns: 1fr; padding-top: 0; border-top: 0; }
-  .award, .award:first-child { padding: 30px 0 0; border-left: 0; border-top: 1px solid var(--line); }
-  .award + .award { margin-top: 30px; }
+  .awards { grid-template-columns: 1fr; gap: 48px; }
   .work { grid-template-columns: 1fr; gap: 36px; }
 }
 
@@ -211,10 +209,11 @@ p:last-child { margin-bottom: 0; }
   .section { padding-top: 48px; padding-bottom: 48px; }
   .awards-section { padding-bottom: 52px; }
   .section__lead { font-size: 1.22rem; margin-bottom: 30px; }
-  .award__logo { height: 52px; margin-bottom: 20px; }
+  .awards__title { margin-bottom: 36px; }
+  .award__logo { height: 52px; margin-bottom: 18px; }
   .award__logo img.logo-wordmark { height: 38px; }
-  .award__name { font-size: 1.45rem; }
-  .insta { gap: 4px; }
+  .award__note { font-size: 1.2rem; }
+  .insta { gap: 4px; margin: 24px 0 20px; }
   .team { gap: 20px; }
   .person img { width: 104px; height: 104px; margin-bottom: 14px; }
   .person h3 { font-size: 1.2rem; }
