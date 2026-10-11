@@ -13,8 +13,9 @@ uber-uns/index.html           Über uns
 impressum/index.html          Impressum
 datenschutzerklarung/         Datenschutzerklärung (auf GitHub Pages angepasst)
 404.html                      Fehlerseite
-assets/css/style.css          gesamtes Design
-assets/img/                   alle Bilder (lokal gesichert, inkl. Instagram-Vorschaubilder)
+assets/css/style.css          gesamtes Design (Calibri, Blocksatz, Dark Mode, Symbole im HTML)
+assets/fonts/                 Carlito – freier Calibri-Ersatz für Geräte ohne Calibri (Lizenz: OFL.txt)
+assets/img/                   alle Bilder (lokal gesichert, inkl. Instagram-Vorschaubilder und Preis-Logos)
 CNAME                         eigene Domain für GitHub Pages
 ```
 
@@ -38,23 +39,35 @@ dann führen die Menülinks aber zu Ordneransichten statt zu den Seiten.)
 4. **Settings → Pages** → Branch `main`, Ordner `/ (root)` → **Save**.
 5. Unter **Custom domain** steht dank `CNAME` bereits `kriegtraumapsyche.de`.
 
-## Domain von WordPress.com auf GitHub umstellen
+## Domain bei Strato auf GitHub zeigen lassen
 
-Die Domain nutzt aktuell die Nameserver von WordPress.com, und `info@kriegtraumapsyche.de`
-läuft über die E-Mail-Weiterleitung von WordPress.com (`MX smtp-fwd.wordpress.com`).
+Die Domain zieht ab dem 12.10.2026 von WordPress.com zu Strato. Sobald der Umzug durch ist, ist die alte
+WordPress-Seite unter kriegtraumapsyche.de weg – deshalb diese Reihenfolge:
 
-1. Erst wenn die GitHub-Seite läuft: bei WordPress.com → **Upgrades → Domains → kriegtraumapsyche.de → DNS-Einträge**.
-2. Die bestehenden `A`-Einträge für `@` ersetzen durch:
+1. **Vorher:** Die Seite bei GitHub hochladen (siehe oben) und prüfen, dass sie unter
+   `https://DEINNAME.github.io/REPO/` läuft.
+2. **Nach dem Umzug** im Strato-Kundenlogin: **Domains → Domainverwaltung → kriegtraumapsyche.de → DNS-Einstellungen**
+   (Menünamen können je nach Paket leicht abweichen).
+3. **A-Record** für die Domain auf GitHub setzen:
    `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
-3. `CNAME` für `www` auf `DEINNAME.github.io` setzen.
-4. **Den MX-Eintrag und die E-Mail-Weiterleitung nicht anfassen**, sonst kommen keine Mails mehr an.
-   Den Google-`TXT`-Eintrag ebenfalls stehen lassen.
-5. Nach einigen Minuten bis Stunden in GitHub **Settings → Pages → Enforce HTTPS** aktivieren.
-6. Erst danach den WordPress.com-Plan der *Website* kündigen – die *Domain-Registrierung* (und damit die
-   Mail-Weiterleitung) muss weiterlaufen. Vorher bei WordPress.com prüfen, ob die Weiterleitung auch ohne Website-Plan aktiv bleibt.
+   Falls Strato nur eine IP-Adresse zulässt, reicht `185.199.108.153`.
+4. Für **www** einen **CNAME-Record** auf `DEINNAME.github.io` anlegen.
+5. **MX-Einträge** (E-Mail) bleiben auf den Strato-Mailservern – nicht ändern.
+6. In GitHub **Settings → Pages**: Custom domain `kriegtraumapsyche.de` prüfen, nach einigen Minuten bis Stunden
+   **Enforce HTTPS** aktivieren.
+7. Optional, aber empfohlen: In GitHub unter **dein Profil → Settings → Pages → Add a domain** die Domain
+   verifizieren (GitHub nennt dafür einen TXT-Eintrag, der bei Strato angelegt wird). Das verhindert, dass
+   jemand anderes die Domain auf GitHub für sich beanspruchen kann.
+8. Danach den WordPress.com-Plan kündigen.
 
-## Vor dem Go-live prüfen
+Der Umzugscode (AuthInfo) wird nur bei Strato für den Domain-Umzug gebraucht.
 
-- Impressum/Datenschutz: Die alte Seite nannte zwei Hausnummern (Stephanstraße **65** im Impressum, **55** in der Datenschutzerklärung).
-  Hier ist überall 65 eingetragen – bitte prüfen und ggf. auf eine aktuelle ladungsfähige Anschrift ändern.
-- Datenschutz: ist auf GitHub Pages + E-Mail-Weiterleitung umgeschrieben. Rechtlich nicht geprüft.
+## E-Mail bei Strato
+
+`info@kriegtraumapsyche.de` steht im Impressum und muss erreichbar bleiben. Die Weiterleitung von WordPress.com
+endet mit dem Umzug.
+
+- Bei Strato die Adresse `info@kriegtraumapsyche.de` als Postfach oder Weiterleitung einrichten – am besten
+  direkt nach dem Umzug, damit keine Mails verloren gehen.
+- Im Strato-Kundenlogin den **Auftragsverarbeitungsvertrag (AV-Vertrag)** abschließen. Die Datenschutzerklärung
+  nennt Strato bereits als E-Mail-Anbieter mit AV-Vertrag.
